@@ -1,25 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
+import "./App.css";
+
+import { Container } from "react-bootstrap";
+
+import { SearchResponse } from "./models";
+
+import { search } from "./api";
+
+import SearchForm from "./SearchForm";
+import Offers from "./Offers";
 
 function App() {
+  const [offers, setOffers] = useState<null | SearchResponse>(null);
+
+  const [origin, setOrigin] = useState<string>("");
+  const [destination, setDestination] = useState<string>("");
+  const [timeFrom, setTimeFrom] = useState<string>("");
+  const [timeTo, setTimeTo] = useState<string>("");
+
+  const [fetchInProgress, setFetchInProgress] = useState(false);
+
+  const onSubmit = (
+    origin: string,
+    destination: string,
+    timeFrom: string,
+    timeTo: string
+  ): void => {
+    setFetchInProgress(true);
+    search(origin, destination, timeFrom, timeTo, (offers) => {
+      setOffers(offers);
+      setFetchInProgress(false);
+    });
+  };
+
+  if (fetchInProgress) {
+    return <div>Searching...</div>;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <h1>Hyper ultra something-like-a-kiwi search</h1>
+      <SearchForm
+        onSubmit={onSubmit}
+        origin={origin}
+        setOrigin={setOrigin}
+        destination={destination}
+        setDestination={setDestination}
+        timeTo={timeTo}
+        setTimeTo={setTimeTo}
+        timeFrom={timeFrom}
+        setTimeFrom={setTimeFrom}
+      />
+      <Offers offers={offers} />
+    </Container>
   );
 }
 
