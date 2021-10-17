@@ -70,7 +70,7 @@ export default function SearchForm({ onSubmit,
         />
       </Form.Group>
 
-      <Button variant="primary" type="button" onClick={() => onSubmit(origin, destination, timeFrom, timeTo)}>
+      <Button variant="primary" type="button" onClick={() => onSubmit(origin, destination, timeFrom, timeTo)} style={{ backgroundColor: "#CC231E", border: "0px" }}>
         Search
       </Button>
     </Form>

@@ -1,7 +1,7 @@
 import { SearchResponse } from "./models";
 import axios from "axios";
 
-const API_URL = "http://localhost:8000";
+const API_URL = "http://192.168.0.38:8000";
 
 export function search(
   origin: string,

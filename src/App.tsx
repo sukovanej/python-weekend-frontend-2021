@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import "./App.css";
+import "./Tree.css";
 
 import { Container } from "react-bootstrap";
 
@@ -10,6 +11,8 @@ import { search } from "./api";
 
 import SearchForm from "./SearchForm";
 import Offers from "./Offers";
+
+import { DepthOfFieldSnowfall } from 'react-snowflakes';
 
 function App() {
   const [offers, setOffers] = useState<null | SearchResponse>(null);
@@ -39,21 +42,44 @@ function App() {
   }
 
   return (
-    <Container>
-      <h1>Hyper ultra something-like-a-kiwi search</h1>
-      <SearchForm
-        onSubmit={onSubmit}
-        origin={origin}
-        setOrigin={setOrigin}
-        destination={destination}
-        setDestination={setDestination}
-        timeTo={timeTo}
-        setTimeTo={setTimeTo}
-        timeFrom={timeFrom}
-        setTimeFrom={setTimeFrom}
-      />
-      <Offers offers={offers} />
-    </Container>
+    <>
+      <DepthOfFieldSnowfall count={150}
+        style={{
+          // Position must be relative or absolute,
+          // because snowflakes are positioned absolutely.
+          color: '#fff',
+          position: 'absolute',
+          width: '95%',
+          height: '95%',
+          zIndex: '-1',
+          backgroundColor: "235E6F",
+        }} />
+
+      <Container>
+        <div className="content-wrapper">
+          <div className="xmas-tree-left"><div className="xmasTree"></div></div>
+          <div className="xmas-tree-right"><div className="xmasTree"></div></div>
+          
+          <div className="navbar">
+            <h1>Christmas adventures</h1>
+          </div>
+          <div className="container-content">
+            <SearchForm
+              onSubmit={onSubmit}
+              origin={origin}
+              setOrigin={setOrigin}
+              destination={destination}
+              setDestination={setDestination}
+              timeTo={timeTo}
+              setTimeTo={setTimeTo}
+              timeFrom={timeFrom}
+              setTimeFrom={setTimeFrom}
+            />
+            <Offers offers={offers} />
+          </div>
+        </div>
+      </Container>
+    </>
   );
 }
 
