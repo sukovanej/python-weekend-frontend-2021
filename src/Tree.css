@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'FontAwesome';
+  src:  url('fonts/fa-solid-900.woff2') format('woff2'),
+        url('fonts/fa-solid-900.woff') format('woff');
+}
+
 .xmas-tree-left {
     position: fixed;
     top: 40%;
@@ -57,7 +63,7 @@
   height: 60px;
   width: 60px;
   top: 10px;
-  left: -20px;
+  left: -24px;
   -webkit-animation: flash 1s ease  infinite forwards;
   -moz-animation: flash 1s ease  infinite forwards;
   -ms-animation: flash 1s ease  infinite forwards;
