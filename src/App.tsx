@@ -19,19 +19,17 @@ function App() {
 
   const [origin, setOrigin] = useState<string>("");
   const [destination, setDestination] = useState<string>("");
-  const [timeFrom, setTimeFrom] = useState<string>("");
-  const [timeTo, setTimeTo] = useState<string>("");
+  const [departure, setDeparture] = useState<string>("");
 
   const [fetchInProgress, setFetchInProgress] = useState(false);
 
   const onSubmit = (
     origin: string,
     destination: string,
-    timeFrom: string,
-    timeTo: string
+    departure: string,
   ): void => {
     setFetchInProgress(true);
-    search(origin, destination, timeFrom, timeTo, (offers) => {
+    search(origin, destination, departure, (offers) => {
       setOffers(offers);
       setFetchInProgress(false);
     });
@@ -70,10 +68,8 @@ function App() {
               setOrigin={setOrigin}
               destination={destination}
               setDestination={setDestination}
-              timeTo={timeTo}
-              setTimeTo={setTimeTo}
-              timeFrom={timeFrom}
-              setTimeFrom={setTimeFrom}
+              departure={departure}
+              setDeparture={setDeparture}
             />
             <Offers offers={offers} />
           </div>
