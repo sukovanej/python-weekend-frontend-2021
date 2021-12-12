@@ -5,7 +5,7 @@ import "./Tree.css";
 
 import { Container } from "react-bootstrap";
 
-import { SearchResponse } from "./models";
+import { SearchResponseItem } from "./models";
 
 import { search } from "./api";
 
@@ -13,9 +13,10 @@ import SearchForm from "./SearchForm";
 import Offers from "./Offers";
 
 import { DepthOfFieldSnowfall } from 'react-snowflakes';
+import Settings from "./Settings";
 
 function App() {
-  const [offers, setOffers] = useState<null | SearchResponse>(null);
+  const [offers, setOffers] = useState<null | SearchResponseItem[]>(null);
 
   const [origin, setOrigin] = useState<string>("");
   const [destination, setDestination] = useState<string>("");
@@ -59,7 +60,9 @@ function App() {
           <div className="xmas-tree-right"><div className="xmasTree"></div></div>
           
           <div className="navbar">
-            <h1>Christmas adventures</h1>
+            <h1>Python weekend search</h1>
+
+            <Settings />
           </div>
           <div className="container-content">
             <SearchForm

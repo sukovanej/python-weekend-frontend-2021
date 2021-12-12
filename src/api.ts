@@ -1,23 +1,20 @@
-import { SearchResponse } from "./models";
+import { SearchResponseItem } from "./models";
+import { BACKEND_URL_STORAGE_KEY } from "./Settings";
 import axios from "axios";
-
-const API_URL = "http://192.168.0.38:8000";
 
 export function search(
   origin: string,
   destination: string,
   departure: string,
-  onSuccess: (response: SearchResponse) => void
+  onSuccess: (response: SearchResponseItem[]) => void
 ): void {
-  let formData = new FormData();
-  formData.append("origin", origin);
-  formData.append("destination", destination);
-  formData.append("departure", departure);
+  const data = { origin, destination, departure };
+  const apiUrl = window.localStorage.getItem(BACKEND_URL_STORAGE_KEY);
 
   axios
-    .post(`${API_URL}/search`, formData, {
-      method: "post",
+    .get(`${apiUrl}/search`, {
       headers: { "accept": "application/json" },
+      params: data,
     })
     .then((res) => onSuccess(res.data));
 }

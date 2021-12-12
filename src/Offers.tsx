@@ -1,9 +1,9 @@
-import { SearchResponse, SearchResponseItem } from "./models";
+import { SearchResponseItem } from "./models";
 
 import Offer from "./Offer";
 
 interface OffersProps {
-  offers: SearchResponse | null;
+  offers: SearchResponseItem[] | null;
 }
 
 export default function Offers({ offers }: OffersProps): JSX.Element {
@@ -11,7 +11,7 @@ export default function Offers({ offers }: OffersProps): JSX.Element {
     return <div>"Nothing there yet"</div>;
   }
 
-  const elements = offers.journeys.map((offer: SearchResponseItem) => (
+  const elements = offers.map((offer: SearchResponseItem) => (
     <Offer offer={offer} />
   ));
 
