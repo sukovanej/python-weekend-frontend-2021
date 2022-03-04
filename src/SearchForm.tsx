@@ -1,4 +1,5 @@
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Row, Col } from "react-bootstrap";
+import { ButtonVariant } from "react-bootstrap/esm/types";
 
 interface SearchFormProps {
   onSubmit: (
@@ -12,6 +13,7 @@ interface SearchFormProps {
   setDestination: (_: string) => void;
   departure: string;
   setDeparture: (_: string) => void;
+  fetchInProgress: boolean;
 }
 
 export default function SearchForm({ onSubmit,
@@ -20,19 +22,27 @@ export default function SearchForm({ onSubmit,
   destination,
   setDestination,
   departure,
-  setDeparture
+  setDeparture,
+  fetchInProgress,
 }: SearchFormProps): JSX.Element {
+  const buttonText = fetchInProgress ? 'Fetching...' : 'Search';
+  const buttonVariant: ButtonVariant = fetchInProgress ? 'outline-success' : 'success';
+
   return (
     <Form>
-      <Form.Group className="mb-3" controlId="origin">
-        <Form.Label>Origin</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Origin"
-          value={origin}
-          onChange={(e) => setOrigin(e.target.value)}
-        />
-      </Form.Group>
+      <Row>
+        <Form.Group className="mb-3" controlId="origin">
+          <Col><Form.Label>Origin</Form.Label></Col>
+          <Col>
+            <Form.Control
+              type="text"
+              placeholder="Origin"
+              value={origin}
+              onChange={(e) => setOrigin(e.target.value)}
+            />
+          </Col>
+        </Form.Group>
+      </Row>
 
       <Form.Group className="mb-3" controlId="destination">
         <Form.Label>Destination</Form.Label>
@@ -54,8 +64,8 @@ export default function SearchForm({ onSubmit,
         />
       </Form.Group>
 
-      <Button variant="primary" type="button" onClick={() => onSubmit(origin, destination, departure)} style={{ backgroundColor: "#CC231E", border: "0px" }}>
-        Search
+      <Button variant={buttonVariant} type="button" onClick={() => onSubmit(origin, destination, departure)}>
+        {buttonText}
       </Button>
     </Form>
   );
