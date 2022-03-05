@@ -47,7 +47,7 @@ code {
 .bg {
   z-index: -1;
   background-color: white;
-  opacity: 50%;
+  opacity: 0.8;
   position: fixed;
   left: 0;
   top: 0;
