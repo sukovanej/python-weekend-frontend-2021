@@ -52,10 +52,12 @@ function App() {
       setOffers(offers);
       setFetchState("success");
     }, (e) => {
-      setErrorMessage(JSON.stringify(e, null, 2));
+      setErrorMessage(`Search failed: ${JSON.stringify(e, null, 2)}`);
       setFetchState("failed");
     });
   };
+
+  const onWhisperFail = (e: any) => setErrorMessage(`Whisper failed: ${JSON.stringify(e, null, 2)}`);
 
   return (
     <>
@@ -77,8 +79,8 @@ function App() {
             </div>
           </div>
 
-          <Alert variant="danger" style={{ display: fetchState === "failed" ? "block" : "none" }}>
-            <Button variant="danger" style={{ float: "right" }} onClick={() => setFetchState("not-started")}>Close</Button>
+          <Alert variant="danger" style={{ maxHeight: 300, overflowY: 'auto', display: errorMessage === "" ? "none" : "block" }}>
+            <Button variant="danger" style={{ float: "right" }} onClick={() => setErrorMessage("")}>Close</Button>
             <pre>{errorMessage}</pre>
           </Alert>
 
@@ -92,6 +94,7 @@ function App() {
               departure={departure}
               setDeparture={setDeparture}
               fetchInProgress={fetchState === "fetching"}
+              onWhisperFail={onWhisperFail}
             />
             <div style={{ height: 10 }}></div>
             <Offers offers={offers} />

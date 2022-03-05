@@ -15,9 +15,11 @@ interface SearchFormProps {
   departure: string;
   setDeparture: (_: string) => void;
   fetchInProgress: boolean;
+  onWhisperFail: (e: any) => void;
 }
 
-export default function SearchForm({ onSubmit,
+export default function SearchForm({ 
+  onSubmit,
   origin,
   setOrigin,
   destination,
@@ -25,6 +27,7 @@ export default function SearchForm({ onSubmit,
   departure,
   setDeparture,
   fetchInProgress,
+  onWhisperFail,
 }: SearchFormProps): JSX.Element {
   const buttonText = fetchInProgress ? 'Fetching...' : 'Search';
   const buttonVariant: ButtonVariant = fetchInProgress ? 'outline-success' : 'success';
@@ -34,14 +37,14 @@ export default function SearchForm({ onSubmit,
         <Form.Group as={Row} className="mb-3" controlId="origin">
           <Form.Label column sm="2">Origin</Form.Label>
           <Col sm="10">
-            <FormControlWhisperer value={origin} onChange={(value) => setOrigin(value)} />
+            <FormControlWhisperer onFail={onWhisperFail} value={origin} onChange={(value) => setOrigin(value)} />
           </Col>
         </Form.Group>
 
       <Form.Group as={Row} className="mb-3" controlId="destination">
         <Form.Label column sm="2">Destination</Form.Label>
         <Col sm="10">
-          <FormControlWhisperer value={destination} onChange={(value) => setDestination(value)} />
+          <FormControlWhisperer onFail={onWhisperFail} value={destination} onChange={(value) => setDestination(value)} />
         </Col>
       </Form.Group>
 

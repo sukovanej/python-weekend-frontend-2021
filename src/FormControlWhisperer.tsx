@@ -4,6 +4,7 @@ import { whisper } from "./api";
 
 interface SearchFormProps {
   onChange: (_: string) => void;
+  onFail: (e: any) => void;
   value: string;
 }
 
@@ -29,7 +30,7 @@ function WhisperList({ whisperList, onClick }: WhisperListProps) {
   );
 }
 
-export default function FormControlWhisperer({ onChange, value }: SearchFormProps): JSX.Element {
+export default function FormControlWhisperer({ onChange, onFail, value }: SearchFormProps): JSX.Element {
   const [whisperList, setWhisperList] = useState<string[]>([]);
 
   const _onChange = (e: any) => {
@@ -38,7 +39,7 @@ export default function FormControlWhisperer({ onChange, value }: SearchFormProp
     if (e.target.value === "") {
       setWhisperList([]);
     } else {
-      whisper(e.target.value, (l) => setWhisperList(l), (e) => console.log(JSON.stringify(e)));
+      whisper(e.target.value, (l) => setWhisperList(l), (e) => onFail(e));
     }
   };
 
