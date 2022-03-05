@@ -20,3 +20,20 @@ export function search(
     .then((res) => onSuccess(res.data))
     .catch((e) => onFail(e));
 }
+
+export function whisper(
+  text: string,
+  onSuccess: (response: string[]) => void,
+  onFail: (e: any) => void
+): void {
+  const data = { text };
+  const apiUrl = window.localStorage.getItem(BACKEND_URL_STORAGE_KEY);
+
+  axios
+    .get(`${apiUrl}/whisper`, {
+      headers: { "accept": "application/json" },
+      params: data,
+    })
+    .then((res) => onSuccess(res.data))
+    .catch((e) => onFail(e));
+}

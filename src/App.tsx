@@ -64,7 +64,7 @@ function App() {
       <div className="kiwi-color-top"></div>
       <Container>
         <div className="content-wrapper">
-          <div style={{ margin: "0 auto;"}}>
+          <div style={{ margin: "0 auto"}}>
             <h1>Python weekend search</h1>
           </div>
 

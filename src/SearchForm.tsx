@@ -1,5 +1,6 @@
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { ButtonVariant } from "react-bootstrap/esm/types";
+import FormControlWhisperer from "./FormControlWhisperer";
 
 interface SearchFormProps {
   onSubmit: (
@@ -33,24 +34,14 @@ export default function SearchForm({ onSubmit,
         <Form.Group as={Row} className="mb-3" controlId="origin">
           <Form.Label column sm="2">Origin</Form.Label>
           <Col sm="10">
-            <Form.Control
-              type="text"
-              placeholder="Origin"
-              value={origin}
-              onChange={(e) => setOrigin(e.target.value)}
-            />
+            <FormControlWhisperer value={origin} onChange={(value) => setOrigin(value)} />
           </Col>
         </Form.Group>
 
       <Form.Group as={Row} className="mb-3" controlId="destination">
         <Form.Label column sm="2">Destination</Form.Label>
         <Col sm="10">
-          <Form.Control
-            type="text"
-            placeholder="Destination"
-            value={destination}
-            onChange={(e) => setDestination(e.target.value)}
-          />
+          <FormControlWhisperer value={destination} onChange={(value) => setDestination(value)} />
         </Col>
       </Form.Group>
 
