@@ -45,19 +45,26 @@ function App() {
   const onSubmit = (
     origin: string,
     destination: string,
-    departure: string,
+    departure: string
   ): void => {
     setFetchState("fetching");
-    search(origin, destination, departure, (offers) => {
-      setOffers(offers);
-      setFetchState("success");
-    }, (e) => {
-      setErrorMessage(`Search failed: ${JSON.stringify(e, null, 2)}`);
-      setFetchState("failed");
-    });
+    search(
+      origin,
+      destination,
+      departure,
+      (offers) => {
+        setOffers(offers);
+        setFetchState("success");
+      },
+      (e) => {
+        setErrorMessage(`Search failed: ${JSON.stringify(e, null, 2)}`);
+        setFetchState("failed");
+      }
+    );
   };
 
-  const onWhisperFail = (e: any) => setErrorMessage(`Whisper failed: ${JSON.stringify(e, null, 2)}`);
+  const onWhisperFail = (e: any) =>
+    setErrorMessage(`Whisper failed: ${JSON.stringify(e, null, 2)}`);
 
   return (
     <>
@@ -66,21 +73,43 @@ function App() {
       <div className="kiwi-color-top"></div>
       <Container>
         <div className="content-wrapper">
-          <div style={{ margin: "0 auto"}}>
+          <div style={{ margin: "0 auto" }}>
             <h1>Python weekend search</h1>
           </div>
 
           <div className="navbar">
-            <img style={{ float: "left" }} src="https://images.kiwi.com/common/kiwicom-logo.svg" alt="kiwi-banner" />
+            <img
+              style={{ float: "left" }}
+              src="https://images.kiwi.com/common/kiwicom-logo.svg"
+              alt="kiwi-banner"
+            />
 
             <div>
               <Settings />
-              <img src="cube.png" alt="cube" className="tree-btn" onClick={() => setChristmassEnabled(!christmassEnabled)} />
+              <img
+                src="cube.png"
+                alt="cube"
+                className="tree-btn"
+                onClick={() => setChristmassEnabled(!christmassEnabled)}
+              />
             </div>
           </div>
 
-          <Alert variant="danger" style={{ maxHeight: 300, overflowY: 'auto', display: errorMessage === "" ? "none" : "block" }}>
-            <Button variant="danger" style={{ float: "right" }} onClick={() => setErrorMessage("")}>Close</Button>
+          <Alert
+            variant="danger"
+            style={{
+              maxHeight: 300,
+              overflowY: "auto",
+              display: errorMessage === "" ? "none" : "block",
+            }}
+          >
+            <Button
+              variant="danger"
+              style={{ float: "right" }}
+              onClick={() => setErrorMessage("")}
+            >
+              Close
+            </Button>
             <pre>{errorMessage}</pre>
           </Alert>
 

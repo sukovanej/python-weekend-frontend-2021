@@ -18,9 +18,11 @@ function WhisperList({ whisperList, onClick }: WhisperListProps) {
     return null;
   }
 
-  const dropDownItems = whisperList.map(
-    (text, i) => <Dropdown.Item eventKey="2" key={i} onClick={() => onClick(text)}>{text}</Dropdown.Item>
-  );
+  const dropDownItems = whisperList.map((text, i) => (
+    <Dropdown.Item eventKey="2" key={i} onClick={() => onClick(text)}>
+      {text}
+    </Dropdown.Item>
+  ));
 
   return (
     <Dropdown.Menu show>
@@ -30,7 +32,11 @@ function WhisperList({ whisperList, onClick }: WhisperListProps) {
   );
 }
 
-export default function FormControlWhisperer({ onChange, onFail, value }: SearchFormProps): JSX.Element {
+export default function FormControlWhisperer({
+  onChange,
+  onFail,
+  value,
+}: SearchFormProps): JSX.Element {
   const [whisperList, setWhisperList] = useState<string[]>([]);
 
   const _onChange = (e: any) => {
@@ -39,14 +45,18 @@ export default function FormControlWhisperer({ onChange, onFail, value }: Search
     if (e.target.value === "") {
       setWhisperList([]);
     } else {
-      whisper(e.target.value, (l) => setWhisperList(l), (e) => onFail(e));
+      whisper(
+        e.target.value,
+        (l) => setWhisperList(l),
+        (e) => onFail(e)
+      );
     }
   };
 
   const onWhisperSelect = (value: string) => {
     setWhisperList([]);
     onChange(value);
-  }
+  };
 
   return (
     <>

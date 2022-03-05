@@ -8,7 +8,9 @@ function saveSettings(backendUrl: string): void {
 }
 
 export default function Settings(): JSX.Element {
-  const [backendUrl, setBackendUrl] = useState<string>(window.localStorage.getItem(BACKEND_URL_STORAGE_KEY) || "");
+  const [backendUrl, setBackendUrl] = useState<string>(
+    window.localStorage.getItem(BACKEND_URL_STORAGE_KEY) || ""
+  );
   const [show, setShow] = useState(false);
 
   const save = () => {
@@ -18,7 +20,11 @@ export default function Settings(): JSX.Element {
 
   return (
     <>
-      <Button variant="primary" onClick={() => setShow(true)} style={{ marginRight: "15px" }}>
+      <Button
+        variant="primary"
+        onClick={() => setShow(true)}
+        style={{ marginRight: "15px" }}
+      >
         Settings
       </Button>
 
@@ -27,7 +33,6 @@ export default function Settings(): JSX.Element {
           <Modal.Title>Settings</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-
           <Form>
             <Form.Group className="mb-3" controlId="origin">
               <Form.Label>Backend URL</Form.Label>

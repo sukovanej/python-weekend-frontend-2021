@@ -14,7 +14,7 @@ export function search(
 
   axios
     .get(`${apiUrl}/search`, {
-      headers: { "accept": "application/json" },
+      headers: { accept: "application/json" },
       params: data,
     })
     .then((res) => onSuccess(res.data))
@@ -31,7 +31,7 @@ export function whisper(
 
   axios
     .get(`${apiUrl}/whisper`, {
-      headers: { "accept": "application/json" },
+      headers: { accept: "application/json" },
       params: data,
     })
     .then((res) => onSuccess(res.data))

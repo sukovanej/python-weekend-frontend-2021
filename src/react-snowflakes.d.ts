@@ -1,1 +1,1 @@
-declare module 'react-snowflakes';
+declare module "react-snowflakes";

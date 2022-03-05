@@ -3,11 +3,7 @@ import { ButtonVariant } from "react-bootstrap/esm/types";
 import FormControlWhisperer from "./FormControlWhisperer";
 
 interface SearchFormProps {
-  onSubmit: (
-    origin: string,
-    destination: string,
-    departure: string
-  ) => void;
+  onSubmit: (origin: string, destination: string, departure: string) => void;
   origin: string;
   setOrigin: (_: string) => void;
   destination: string;
@@ -18,7 +14,7 @@ interface SearchFormProps {
   onWhisperFail: (e: any) => void;
 }
 
-export default function SearchForm({ 
+export default function SearchForm({
   onSubmit,
   origin,
   setOrigin,
@@ -29,27 +25,43 @@ export default function SearchForm({
   fetchInProgress,
   onWhisperFail,
 }: SearchFormProps): JSX.Element {
-  const buttonText = fetchInProgress ? 'Fetching...' : 'Search';
-  const buttonVariant: ButtonVariant = fetchInProgress ? 'outline-success' : 'success';
+  const buttonText = fetchInProgress ? "Fetching..." : "Search";
+  const buttonVariant: ButtonVariant = fetchInProgress
+    ? "outline-success"
+    : "success";
 
   return (
     <Form>
-        <Form.Group as={Row} className="mb-3" controlId="origin">
-          <Form.Label column sm="2">Origin</Form.Label>
-          <Col sm="10">
-            <FormControlWhisperer onFail={onWhisperFail} value={origin} onChange={(value) => setOrigin(value)} />
-          </Col>
-        </Form.Group>
+      <Form.Group as={Row} className="mb-3" controlId="origin">
+        <Form.Label column sm="2">
+          Origin
+        </Form.Label>
+        <Col sm="10">
+          <FormControlWhisperer
+            onFail={onWhisperFail}
+            value={origin}
+            onChange={(value) => setOrigin(value)}
+          />
+        </Col>
+      </Form.Group>
 
       <Form.Group as={Row} className="mb-3" controlId="destination">
-        <Form.Label column sm="2">Destination</Form.Label>
+        <Form.Label column sm="2">
+          Destination
+        </Form.Label>
         <Col sm="10">
-          <FormControlWhisperer onFail={onWhisperFail} value={destination} onChange={(value) => setDestination(value)} />
+          <FormControlWhisperer
+            onFail={onWhisperFail}
+            value={destination}
+            onChange={(value) => setDestination(value)}
+          />
         </Col>
       </Form.Group>
 
       <Form.Group as={Row} className="mb-3" controlId="departure">
-        <Form.Label column sm="2">Departure</Form.Label>
+        <Form.Label column sm="2">
+          Departure
+        </Form.Label>
         <Col sm="10">
           <Form.Control
             type="datetime-local"
@@ -60,7 +72,11 @@ export default function SearchForm({
         </Col>
       </Form.Group>
 
-      <Button variant={buttonVariant} type="button" onClick={() => onSubmit(origin, destination, departure)}>
+      <Button
+        variant={buttonVariant}
+        type="button"
+        onClick={() => onSubmit(origin, destination, departure)}
+      >
         {buttonText}
       </Button>
     </Form>
