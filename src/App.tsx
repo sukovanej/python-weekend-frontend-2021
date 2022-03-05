@@ -15,7 +15,7 @@ import Settings from "./Settings";
 import Snowflakes from "./Snowflakes";
 
 function setChristmassTheme() {
-  document.body.style.backgroundImage = "url(http://localhost:3000/dedove.jpg)";
+  document.body.style.backgroundImage = "url(./dedove.jpg)";
   document.body.style.backgroundSize = "100% auto";
 }
 
