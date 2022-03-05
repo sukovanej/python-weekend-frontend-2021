@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { CSSProperties, useState } from "react";
 
 import "./App.css";
 import "./Tree.css";
@@ -13,6 +13,16 @@ import SearchForm from "./SearchForm";
 import Offers from "./Offers";
 import Settings from "./Settings";
 import Snowflakes from "./Snowflakes";
+
+const cubeSolveStyle: CSSProperties = {
+  backgroundImage: "url(./cube.png)",
+  backgroundPosition: "0px 0px",
+};
+
+const cubeUnsolvedStyle: CSSProperties = {
+  backgroundImage: "url(./cube.png)",
+  backgroundPosition: "0px 40px",
+};
 
 function setChristmassTheme() {
   document.body.style.backgroundImage = "url(./dedove.jpg)";
@@ -66,6 +76,10 @@ function App() {
   const onWhisperFail = (e: any) =>
     setErrorMessage(`Whisper failed: ${JSON.stringify(e, null, 2)}`);
 
+  const cubeStyle = christmassEnabled ? cubeSolveStyle : cubeUnsolvedStyle;
+  console.log(christmassEnabled);
+  console.log(cubeStyle);
+
   return (
     <>
       <div className="bg"></div>
@@ -84,14 +98,13 @@ function App() {
               alt="kiwi-banner"
             />
 
-            <div>
+            <div style={{ display: "flex" }}>
               <Settings />
-              <img
-                src="cube.png"
-                alt="cube"
-                className="tree-btn"
+              <div
+                style={cubeStyle}
+                className="cube"
                 onClick={() => setChristmassEnabled(!christmassEnabled)}
-              />
+              ></div>
             </div>
           </div>
 
