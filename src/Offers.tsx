@@ -8,7 +8,7 @@ interface OffersProps {
 
 export default function Offers({ offers }: OffersProps): JSX.Element {
   if (offers == null) {
-    return <div>"Nothing there yet"</div>;
+    return <div>Nothing there yet</div>;
   }
 
   const elements = offers.map((offer: SearchResponseItem) => (

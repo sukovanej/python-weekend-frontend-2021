@@ -30,10 +30,9 @@ export default function SearchForm({ onSubmit,
 
   return (
     <Form>
-      <Row>
-        <Form.Group className="mb-3" controlId="origin">
-          <Col><Form.Label>Origin</Form.Label></Col>
-          <Col>
+        <Form.Group as={Row} className="mb-3" controlId="origin">
+          <Form.Label column sm="2">Origin</Form.Label>
+          <Col sm="10">
             <Form.Control
               type="text"
               placeholder="Origin"
@@ -42,26 +41,29 @@ export default function SearchForm({ onSubmit,
             />
           </Col>
         </Form.Group>
-      </Row>
 
-      <Form.Group className="mb-3" controlId="destination">
-        <Form.Label>Destination</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Destination"
-          value={destination}
-          onChange={(e) => setDestination(e.target.value)}
-        />
+      <Form.Group as={Row} className="mb-3" controlId="destination">
+        <Form.Label column sm="2">Destination</Form.Label>
+        <Col sm="10">
+          <Form.Control
+            type="text"
+            placeholder="Destination"
+            value={destination}
+            onChange={(e) => setDestination(e.target.value)}
+          />
+        </Col>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="departure">
-        <Form.Label>Departure</Form.Label>
-        <Form.Control
-          type="datetime-local"
-          placeholder="Departure"
-          value={departure}
-          onChange={(e) => setDeparture(e.target.value)}
-        />
+      <Form.Group as={Row} className="mb-3" controlId="departure">
+        <Form.Label column sm="2">Departure</Form.Label>
+        <Col sm="10">
+          <Form.Control
+            type="datetime-local"
+            placeholder="Departure"
+            value={departure}
+            onChange={(e) => setDeparture(e.target.value)}
+          />
+        </Col>
       </Form.Group>
 
       <Button variant={buttonVariant} type="button" onClick={() => onSubmit(origin, destination, departure)}>

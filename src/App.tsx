@@ -29,19 +29,18 @@ type FetchState = "not-started" | "fetching" | "success" | "failed";
 function App() {
   const [offers, setOffers] = useState<null | SearchResponseItem[]>(null);
   const [christmassEnabled, setChristmassEnabled] = useState(false);
-
-  if (christmassEnabled) {
-    setChristmassTheme();
-  } else {
-    setNormalTheme();
-  }
-
   const [origin, setOrigin] = useState<string>("");
   const [destination, setDestination] = useState<string>("");
   const [departure, setDeparture] = useState<string>("");
 
   const [fetchState, setFetchState] = useState<FetchState>("not-started");
   const [errorMessage, setErrorMessage] = useState("");
+
+  if (christmassEnabled) {
+    setChristmassTheme();
+  } else {
+    setNormalTheme();
+  }
 
   const onSubmit = (
     origin: string,
@@ -65,12 +64,16 @@ function App() {
       <div className="kiwi-color-top"></div>
       <Container>
         <div className="content-wrapper">
-          <div className="navbar">
+          <div style={{ margin: "0 auto;"}}>
             <h1>Python weekend search</h1>
+          </div>
+
+          <div className="navbar">
+            <img style={{ float: "left" }} src="https://images.kiwi.com/common/kiwicom-logo.svg" alt="kiwi-banner" />
 
             <div>
-            <Settings />
-            <img src="cube.png" className="tree-btn" onClick={() => setChristmassEnabled(!christmassEnabled)} />
+              <Settings />
+              <img src="cube.png" alt="cube" className="tree-btn" onClick={() => setChristmassEnabled(!christmassEnabled)} />
             </div>
           </div>
 
@@ -90,6 +93,7 @@ function App() {
               setDeparture={setDeparture}
               fetchInProgress={fetchState === "fetching"}
             />
+            <div style={{ height: 10 }}></div>
             <Offers offers={offers} />
           </div>
         </div>
