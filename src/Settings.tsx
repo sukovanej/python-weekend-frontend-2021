@@ -38,7 +38,7 @@ export default function Settings(): JSX.Element {
               <Form.Label>Backend URL</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Origin"
+                placeholder="for example http://localhost:8080"
                 value={backendUrl}
                 onChange={(e) => setBackendUrl(e.target.value)}
               />

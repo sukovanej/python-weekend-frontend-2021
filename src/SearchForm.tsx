@@ -41,6 +41,7 @@ export default function SearchForm({
             onFail={onWhisperFail}
             value={origin}
             onChange={(value) => setOrigin(value)}
+            placeholder="origin"
           />
         </Col>
       </Form.Group>
@@ -54,6 +55,7 @@ export default function SearchForm({
             onFail={onWhisperFail}
             value={destination}
             onChange={(value) => setDestination(value)}
+            placeholder="destination"
           />
         </Col>
       </Form.Group>

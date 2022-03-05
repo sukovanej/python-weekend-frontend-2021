@@ -7,12 +7,14 @@ interface SearchFormProps {
   onChange: (_: string) => void;
   onFail: (e: any) => void;
   value: string;
+  placeholder?: string | undefined;
 }
 
 export default function FormControlWhisperer({
   onChange,
   onFail,
   value,
+  placeholder,
 }: SearchFormProps): JSX.Element {
   const [whisperList, setWhisperList] = useState<string[]>([]);
 
@@ -39,7 +41,7 @@ export default function FormControlWhisperer({
     <>
       <Form.Control
         type="text"
-        placeholder="Origin"
+        placeholder={placeholder}
         value={value}
         onChange={_onChange}
         onKeyDown={(e) => {
