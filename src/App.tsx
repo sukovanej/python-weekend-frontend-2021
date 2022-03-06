@@ -24,6 +24,11 @@ const cubeUnsolvedStyle: CSSProperties = {
   backgroundPosition: "0px 40px",
 };
 
+function setMilanTheme() {
+  document.body.style.backgroundImage = "url(./milan.jpg)";
+  document.body.style.backgroundSize = "100% auto";
+}
+
 function setChristmassTheme() {
   document.body.style.backgroundImage = "url(./dedove.jpg)";
   document.body.style.backgroundSize = "100% auto";
@@ -43,13 +48,19 @@ function App() {
   const [destination, setDestination] = useState<string>("");
   const [departure, setDeparture] = useState<string>("");
 
+  const [milan, setMilan] = useState(false);
+
   const [fetchState, setFetchState] = useState<FetchState>("not-started");
   const [errorMessage, setErrorMessage] = useState("");
 
-  if (christmassEnabled) {
-    setChristmassTheme();
+  if (milan) {
+    setMilanTheme();
   } else {
-    setNormalTheme();
+    if (christmassEnabled) {
+      setChristmassTheme();
+    } else {
+      setNormalTheme();
+    }
   }
 
   const onSubmit = (
@@ -65,6 +76,11 @@ function App() {
       (offers) => {
         setOffers(offers);
         setFetchState("success");
+        if (destination.toLowerCase().includes("milan")) {
+          setMilan(true)
+        } else {
+          setMilan(false)
+        }
       },
       (e) => {
         setErrorMessage(`Search failed: ${JSON.stringify(e, null, 2)}`);
