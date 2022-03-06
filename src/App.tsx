@@ -1,3 +1,7 @@
+import { pipe } from 'fp-ts/function';
+import * as E from 'fp-ts/Either';
+import * as D from 'io-ts/Decoder';
+
 import { CSSProperties, useState } from "react";
 
 import "./App.css";
@@ -5,14 +9,13 @@ import "./Tree.css";
 
 import { Alert, Button, Container } from "react-bootstrap";
 
-import { SearchResponseItem } from "./models";
-
 import { search } from "./api";
 
 import SearchForm from "./SearchForm";
 import Offers from "./Offers";
 import Settings from "./Settings";
 import Snowflakes from "./Snowflakes";
+import { SearchResponseItem } from './SearchResponseModelDecoder';
 
 const cubeSolveStyle: CSSProperties = {
   backgroundImage: "url(./cube.png)",
@@ -74,8 +77,21 @@ function App() {
       destination,
       departure,
       (offers) => {
-        setOffers(offers);
-        setFetchState("success");
+        pipe(
+          offers,
+          E.match(
+            (err) => {
+              setOffers([]);
+              setFetchState("failed");
+              setErrorMessage(`Decoding failed: ${D.draw(err)}`);
+            },
+            (offers) => {
+              setOffers(offers);
+              setFetchState("success");
+            }
+          )
+        );
+
         if (destination.toLowerCase().includes("milan")) {
           setMilan(true)
         } else {

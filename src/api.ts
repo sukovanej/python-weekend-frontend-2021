@@ -1,12 +1,15 @@
-import { SearchResponseItem } from "./models";
+import * as E from 'fp-ts/Either';
+import * as D from 'io-ts/Decoder';
+
 import { BACKEND_URL_STORAGE_KEY } from "./Settings";
 import axios from "axios";
+import { SearchResponseList, searchResponseListDecoder } from "./SearchResponseModelDecoder";
 
 export function search(
   origin: string,
   destination: string,
   departure: string,
-  onSuccess: (response: SearchResponseItem[]) => void,
+  onSuccess: (response: E.Either<D.DecodeError, SearchResponseList>) => void,
   onFail: (e: any) => void
 ): void {
   const data = { origin, destination, departure };
@@ -17,7 +20,7 @@ export function search(
       headers: { accept: "application/json" },
       params: data,
     })
-    .then((res) => onSuccess(res.data))
+    .then((res) => onSuccess(searchResponseListDecoder.decode(res.data)))
     .catch((e) => onFail(e));
 }
 

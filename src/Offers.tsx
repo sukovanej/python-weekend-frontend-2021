@@ -1,6 +1,5 @@
-import { SearchResponseItem } from "./models";
-
 import Offer from "./Offer";
+import { SearchResponseItem } from "./SearchResponseModelDecoder";
 
 interface OffersProps {
   offers: SearchResponseItem[] | null;
