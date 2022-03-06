@@ -66,7 +66,7 @@ export default function SearchForm({
         </Form.Label>
         <Col sm="10">
           <Form.Control
-            type="datetime-local"
+            type="date"
             placeholder="Departure"
             value={departure}
             onChange={(e) => setDeparture(e.target.value)}
