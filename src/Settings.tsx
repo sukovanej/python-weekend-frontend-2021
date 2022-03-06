@@ -7,6 +7,14 @@ function saveSettings(backendUrl: string): void {
   window.localStorage.setItem(BACKEND_URL_STORAGE_KEY, backendUrl);
 }
 
+function setMilanAnimation() {
+  document.body.style.animationName = "move";
+}
+
+function unsetMilanAnimation() {
+  document.body.style.animationName = "";
+}
+
 export default function Settings(): JSX.Element {
   const [backendUrl, setBackendUrl] = useState<string>(
     window.localStorage.getItem(BACKEND_URL_STORAGE_KEY) || ""
@@ -17,6 +25,12 @@ export default function Settings(): JSX.Element {
     saveSettings(backendUrl);
     setShow(false);
   };
+
+  if (backendUrl.toLowerCase().includes("milan")) {
+    setMilanAnimation()
+  } else {
+    unsetMilanAnimation()
+  }
 
   return (
     <>

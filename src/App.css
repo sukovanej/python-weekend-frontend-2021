@@ -7,7 +7,15 @@
   pointer-events: none;
 }
 
+@keyframes move {
+  from {margin: 0}
+  to {margin: 1000px}
+}
+
 body {
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
