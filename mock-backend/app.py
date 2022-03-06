@@ -25,8 +25,8 @@ from pydantic import BaseModel
 class SearchResponse(BaseModel):
     origin: str
     destination: str
-    arrival_time: str
-    departure_time: str
+    arrival: str
+    departure: str
 
 
 @app.get("/search")
@@ -35,7 +35,7 @@ def search(origin: str, destination: str, departure: str) -> list[SearchResponse
         SearchResponse(
             origin=origin,
             destination=destination,
-            arrival_time=departure,
-            departure_time="departure_ime"
+            arrival=departure,
+            departure="departure_time"
         )
     ]
