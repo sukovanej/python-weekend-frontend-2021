@@ -93,8 +93,6 @@ function App() {
     setErrorMessage(`Whisper failed: ${JSON.stringify(e, null, 2)}`);
 
   const cubeStyle = christmassEnabled ? cubeSolveStyle : cubeUnsolvedStyle;
-  console.log(christmassEnabled);
-  console.log(cubeStyle);
 
   return (
     <>
