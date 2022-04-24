@@ -6,17 +6,16 @@ interface OfferProps {
 
 export default function Offer({ offer }: OfferProps) {
   return (
-    <div>
-      <img
-        src="delimiter.png"
-        alt="_"
-        className="center"
-        style={{ marginTop: 20, marginBottom: 20 }}
-      />
+    <div className="offer-block">
       <h1>
-        {offer.origin} - {offer.destination}
+        {offer.origin} - {offer.destination} ({offer.departure})
       </h1>
-      ({offer.departure} - {offer.arrival})
+      <p>
+      Departure: {offer.departure} <br/>
+      Arrival: {offer.arrival} <br/>
+      From: {offer.origin} <br/>
+      To: {offer.destination}
+      </p>
     </div>
   );
 }

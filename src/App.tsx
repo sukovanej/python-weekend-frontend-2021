@@ -37,6 +37,11 @@ function setChristmassTheme() {
   document.body.style.backgroundSize = "100% auto";
 }
 
+function setBrnoTheme() {
+  document.body.style.backgroundImage = "url(./kun.jpeg)";
+  document.body.style.backgroundSize = "100% auto";
+}
+
 function setNormalTheme() {
   document.body.style.backgroundImage = "";
   document.body.style.backgroundColor = "#fff";
@@ -47,6 +52,7 @@ type FetchState = "not-started" | "fetching" | "success" | "failed";
 function App() {
   const [offers, setOffers] = useState<null | SearchResponseItem[]>(null);
   const [christmassEnabled, setChristmassEnabled] = useState(false);
+  const [brnoEnabled, setBrnoEnabled] = useState(false);
   const [origin, setOrigin] = useState<string>("");
   const [destination, setDestination] = useState<string>("");
   const [departure, setDeparture] = useState<string>("");
@@ -56,14 +62,14 @@ function App() {
   const [fetchState, setFetchState] = useState<FetchState>("not-started");
   const [errorMessage, setErrorMessage] = useState("");
 
-  if (milan) {
+  if (christmassEnabled) {
+    setChristmassTheme();
+  } else if (milan) {
     setMilanTheme();
+  } else if (brnoEnabled) {
+    setBrnoTheme();
   } else {
-    if (christmassEnabled) {
-      setChristmassTheme();
-    } else {
-      setNormalTheme();
-    }
+    setNormalTheme();
   }
 
   const onSubmit = (
@@ -134,6 +140,14 @@ function App() {
                 style={cubeStyle}
                 className="cube"
                 onClick={() => setChristmassEnabled(!christmassEnabled)}
+              ></div>
+              <div
+                style={{
+                  backgroundImage: "url(./brno-dick.png)",
+                  backgroundPosition: "0px 40px",
+                }}
+                className="cube"
+                onClick={() => setBrnoEnabled(!brnoEnabled)}
               ></div>
             </div>
           </div>
