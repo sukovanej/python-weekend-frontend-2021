@@ -14,6 +14,7 @@ import { search } from "./api";
 import SearchForm from "./SearchForm";
 import Offers from "./Offers";
 import Settings from "./Settings";
+import Lizard from "./Lizard";
 import Snowflakes from "./Snowflakes";
 import { SearchResponseItem } from './SearchResponseModelDecoder';
 
@@ -53,6 +54,7 @@ function App() {
   const [offers, setOffers] = useState<null | SearchResponseItem[]>(null);
   const [christmassEnabled, setChristmassEnabled] = useState(false);
   const [brnoEnabled, setBrnoEnabled] = useState(false);
+  const [barcelonaEnabled, setBarcelonaEnabled] = useState(false);
   const [origin, setOrigin] = useState<string>("");
   const [destination, setDestination] = useState<string>("");
   const [departure, setDeparture] = useState<string>("");
@@ -118,6 +120,7 @@ function App() {
 
   return (
     <>
+      <Lizard isEnabled={barcelonaEnabled}/>
       <div className="bg"></div>
       <Snowflakes />
       <div className="kiwi-color-top"></div>
@@ -148,6 +151,14 @@ function App() {
                 }}
                 className="cube"
                 onClick={() => setBrnoEnabled(!brnoEnabled)}
+              ></div>
+              <div
+                  style={{
+                    backgroundImage: "url(./barcelona.png)",
+                    backgroundPosition: "0px 40px",
+                  }}
+                  className="cube"
+                  onClick={() => setBarcelonaEnabled(!barcelonaEnabled)}
               ></div>
             </div>
           </div>

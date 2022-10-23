@@ -1,85 +1,124 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @keyframes move {
-  from {margin: 0}
-  to {margin: 1000px}
+    from {
+        margin: 0
+    }
+    to {
+        margin: 1000px
+    }
 }
 
 body {
-  animation-duration: 4s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #fff;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 .tree-btn {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
 }
 
 .kiwi-color-top {
-  background-color: rgb(0, 169, 145);
-  height: 15px;
-  width: 100%;
+    background-color: rgb(0, 169, 145);
+    height: 15px;
+    width: 100%;
 }
 
 .bg {
-  z-index: -1;
-  background-color: white;
-  opacity: 0.8;
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 100%;
-  right: 100%;
-  width: 100%;
-  height: 100%;
+    z-index: -1;
+    background-color: white;
+    opacity: 0.8;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 100%;
+    right: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .cube {
-  background-size: cover;
-  width: 40px;
-  height: 40px;
-  display: inline-block;
-  cursor: pointer;
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    cursor: pointer;
 }
 
 .cube:hover {
-  opacity: 0.7;
+    opacity: 0.7;
 }
 
 .offer-block {
-  border-radius: 15px;
-  padding: 10px;
-  box-shadow: 2px 3px 3px 3px #888888;
-  background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 2px 3px 3px 3px #888888;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+#barcelona {
+    display: none;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    margin: 0;
+    width: 200px;
+    height: 100px;
+    animation-direction: alternate;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    animation-name: slide;
+    animation-play-state: paused;
+    animation-timing-function: steps(15, end);
+    animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes slide {
+  from {
+    margin-left: 0
+  }
+  to {
+    margin-left: 80%
+  }
+}
+
+@keyframes slide {
+  from {
+    margin-left: 0
+  }
+  to {
+    margin-left: 180%
+  }
 }
