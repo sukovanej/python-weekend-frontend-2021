@@ -60,9 +60,12 @@ function App() {
   const [destination, setDestination] = useState<string>("");
   const [departure, setDeparture] = useState<string>("");
 
-  document.body.onclick = () => {
+  const addLizardIfToggled = () => {
       if (lizardToggle) addLizard();
   };
+
+  document.body.onclick = addLizardIfToggled;
+  document.body.onkeydown = addLizardIfToggled;
 
   const [milan, setMilan] = useState(false);
 
