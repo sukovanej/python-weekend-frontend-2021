@@ -1,14 +1,15 @@
 interface LizardProps {
-    isEnabled: boolean
+    position: number
 }
 
-export default function Lizard({isEnabled}: LizardProps) {
+export default function Lizard({position}: LizardProps) {
     return (
         <div id="barcelona"
              style={{backgroundImage: "url('./lizard2.png')",
                  backgroundSize: "cover",
-                 animationPlayState: isEnabled ? 'running' : 'paused',
-                 display: isEnabled ? 'inline-block' : 'none'
+                 animationPlayState: position ? 'running' : 'paused',
+                 display: position ? 'inline-block' : 'none',
+                 top: position
         }}>
 
         </div>

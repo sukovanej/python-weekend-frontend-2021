@@ -54,7 +54,7 @@ function App() {
   const [offers, setOffers] = useState<null | SearchResponseItem[]>(null);
   const [christmassEnabled, setChristmassEnabled] = useState(false);
   const [brnoEnabled, setBrnoEnabled] = useState(false);
-  const [barcelonaEnabled, setBarcelonaEnabled] = useState(false);
+  const [barcelonaEnabled, setBarcelonaEnabled] = useState<number[]>([]);
   const [origin, setOrigin] = useState<string>("");
   const [destination, setDestination] = useState<string>("");
   const [departure, setDeparture] = useState<string>("");
@@ -118,9 +118,14 @@ function App() {
 
   const cubeStyle = christmassEnabled ? cubeSolveStyle : cubeUnsolvedStyle;
 
+  const addLizard = () => {
+      const position = Math.random() * 600 + 20;
+      setBarcelonaEnabled(barcelonaEnabled.concat([position]));
+  };
+
   return (
     <>
-      <Lizard isEnabled={barcelonaEnabled}/>
+        {barcelonaEnabled.map((height) => <Lizard position={height}/>)}
       <div className="bg"></div>
       <Snowflakes />
       <div className="kiwi-color-top"></div>
@@ -158,7 +163,7 @@ function App() {
                     backgroundPosition: "0px 40px",
                   }}
                   className="cube"
-                  onClick={() => setBarcelonaEnabled(!barcelonaEnabled)}
+                  onClick={addLizard}
               ></div>
             </div>
           </div>
