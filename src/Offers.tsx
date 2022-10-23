@@ -14,5 +14,10 @@ export default function Offers({ offers }: OffersProps): JSX.Element {
     <Offer offer={offer} />
   ));
 
-  return <div>{elements}</div>;
+  return (
+    <div>
+      <img src="banana-dance-dancing-banana.gif" alt="Milan je dement" />
+      {elements}
+    </div>
+  );
 }

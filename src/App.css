@@ -82,10 +82,12 @@ code {
 }
 
 .offer-block {
-    border-radius: 15px;
-    padding: 10px;
-    box-shadow: 2px 3px 3px 3px #888888;
+    border-radius: 200px;
+    padding: 20px 100px;
+    border: 1px solid #00A991;
+    box-shadow: 10px 10px #7F91A8;
     background: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
 }
 
 #barcelona {
