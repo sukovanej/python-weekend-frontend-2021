@@ -52,12 +52,17 @@ type FetchState = "not-started" | "fetching" | "success" | "failed";
 
 function App() {
   const [offers, setOffers] = useState<null | SearchResponseItem[]>(null);
+  const [lizardToggle, setLizardToggle] = useState(false);
   const [christmassEnabled, setChristmassEnabled] = useState(false);
   const [brnoEnabled, setBrnoEnabled] = useState(false);
-  const [barcelonaEnabled, setBarcelonaEnabled] = useState<number[]>([]);
+  const [lizardPositions, setLizardPositions] = useState<number[]>([]);
   const [origin, setOrigin] = useState<string>("");
   const [destination, setDestination] = useState<string>("");
   const [departure, setDeparture] = useState<string>("");
+
+  document.body.onclick = () => {
+      if (lizardToggle) addLizard();
+  };
 
   const [milan, setMilan] = useState(false);
 
@@ -120,12 +125,12 @@ function App() {
 
   const addLizard = () => {
       const position = Math.random() * 600 + 20;
-      setBarcelonaEnabled(barcelonaEnabled.concat([position]));
+      setLizardPositions(lizardPositions.concat([position]));
   };
 
   return (
     <>
-        {barcelonaEnabled.map((height) => <Lizard position={height}/>)}
+        {lizardPositions.map((height) => <Lizard position={height}/>)}
       <div className="bg"></div>
       <Snowflakes />
       <div className="kiwi-color-top"></div>
@@ -163,7 +168,7 @@ function App() {
                     backgroundPosition: "0px 40px",
                   }}
                   className="cube"
-                  onClick={addLizard}
+                  onClick={() => setLizardToggle(!lizardToggle)}
               ></div>
             </div>
           </div>
